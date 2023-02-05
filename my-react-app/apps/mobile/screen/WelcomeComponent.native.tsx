@@ -23,6 +23,7 @@ const WelcomeComponent = () => {
           source={require('../assets/welcome.json')}
         />
         <View style={styles.buttonContainer}>
+
           <Button
             title="Restart Animation"
             onPress={() => {

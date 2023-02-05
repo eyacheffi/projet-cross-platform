@@ -13,10 +13,10 @@ const UpNextButtonMeta: ComponentMeta<typeof UpNextButton> = {
        }
     },
     args: {
-        backgroundColor: 'red',
-        textColor: '#FFFF00',
-        borderRadius: '10',
-        text: 'Hello',
+        backgroundColor: '#2F3142',
+        textColor: '#C4C4C4',
+        borderRadius: 30,
+        text: 'Up Next',
         type: 'button'
     }
 }
@@ -31,5 +31,5 @@ export const ButtonLink : UpNextButtonStory = (args) => <UpNextButton {...args} 
 ButtonLink.args = {
     ...ButtonWithBackground.args,
     type:'link',
-    textColor : '#562c2c'
+    textColor : '#C4C4C4'
 }

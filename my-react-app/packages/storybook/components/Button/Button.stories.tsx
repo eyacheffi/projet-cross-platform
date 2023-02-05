@@ -10,6 +10,7 @@ const MyButtonMeta: ComponentMeta<typeof MyButton> = {
   },
   args: {
     text: "Hello world",
+    backgroundColor : 'red',
   },
 };
 
@@ -18,3 +19,10 @@ export default MyButtonMeta;
 type MyButtonStory = ComponentStory<typeof MyButton>;
 
 export const Basic: MyButtonStory = (args) => <MyButton {...args} />;
+export const WithoutBG: MyButtonStory = (args) => <MyButton {...args} />;
+
+WithoutBG.args={
+  ...WithoutBG.args,
+  backgroundColor: 'transparent'
+
+}

@@ -1,40 +1,59 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import {  StyleSheet,  TouchableOpacity, View ,ScrollView } from 'react-native'
+import React, { useState ,useEffect } from 'react'
+import { PlayList } from "@my-workspace/my-ui";
+import { MyButton } from "@my-workspace/my-ui";
+import data from '../assets/Playlist.json';
+
 
 const PlaylistScreen = ({ navigation }) => {
-    const [playlist] = useState([{
-        name: "video 1",
-        urlMp4 : "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-        duration : 70, 
-        poster : "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2020%2F01%2Feminem-1-2000.jpg"
+    const [playlist, setData] = useState([]);
 
-
-    }, {
-        name: "video 2",
-        urlMp4 : "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-        duration : 70,
-        poster : "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2020%2F01%2Feminem-1-2000.jpg"
-
-
-
-    }])
+    useEffect(() => {
+        setData(data);
+    }, []);
     return (
         <View>
+            <View style={{ height: 400 }}>
+                <ScrollView>
+                {playlist.map(item=>{return(
+                    <TouchableOpacity key={item.id} onPress={()=>navigation.navigate("Home", {...item})}>
+                        <PlayList 
+                            backgroundColor="#1F1D2B"
+                            color="#FFFFFF"
+                            description={item.artiste}
+                            image={item.poster}
+                            title={item.name}
+                        />
+                    </TouchableOpacity>
+                    
+                )})}
+                </ScrollView>
+            </View>
+             
 
-            {playlist.map(p=>{return(
-                <TouchableOpacity onPress={()=>navigation.navigate("Home", {...p})}>
-                    <Text> {p.name} </Text>
-                </TouchableOpacity>
-            )})}
-
-            <Button title='Artiste' onPress={()=> {navigation.navigate('Artiste')}}>
-
-            </Button>
-
+            <View  style={styles.container} >
+                <MyButton
+                backgroundColor="transparent"
+                onPress={() => {navigation.navigate('WelcomeComponent')}}
+                text="Welcome Page"
+                />
+                <MyButton
+                backgroundColor="transparent"
+                onPress={() => {navigation.navigate('Artiste')}}
+                text="Artiste"
+                />
+            </View>
+           
         </View>
     )
 }
 
 export default PlaylistScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 15,
+      },
+})

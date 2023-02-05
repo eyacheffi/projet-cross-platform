@@ -1,5 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import { Button, StyleSheet, View ,Text  } from 'react-native';
+import { Button, StyleSheet, View ,Text , Image  } from 'react-native';
+import { MyButton } from "@my-workspace/my-ui";
+
+
 
 const WelcomeComponent = ({navigation}) => {
     const animation = useRef(null);
@@ -10,12 +13,19 @@ const WelcomeComponent = ({navigation}) => {
   
     return (
       <View style={styles.animationContainer}>
-       <Text>web</Text>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Next Playlist"
-            onPress={()=> navigation.navigate("Playlist")}
+       <Text style={styles.titleContainer}>Shtify</Text>
+       <Image
+            style ={styles.imageContainer}
+            source={require ( "../assets/giphy.gif")}
           />
+        <View style={styles.buttonContainer}>
+        
+        <MyButton
+          backgroundColor="transparent"
+          onPress={() =>  navigation.navigate("Playlist")}
+          text="Welcome"
+        />
+          
         </View>
       </View>
     );
@@ -33,5 +43,16 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
       paddingTop: 20,
+    },
+    titleContainer:{
+      marginBottom: '40px',
+      fontFamily: 'Cochin',
+      fontSize: 40,
+      fontWeight: 'bold',
+    },
+    imageContainer:{
+      width: "70%", 
+      height:"70%",
+      borderRadius:20,
     },
   });

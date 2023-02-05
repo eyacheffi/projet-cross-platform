@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View , Image } from 'react-native'
 import React from 'react'
-interface CardProps {
+interface PlayListProps {
     title: string;
     description: string;
+    backgroundColor:string;
     color:string;
     image:string;
-    borderRadius: number;
 }
-const Card = ({ title,description,color, image,borderRadius }: CardProps) => {
+ 
+const PlayList = ({ title,description,backgroundColor,color, image }: PlayListProps) => {
   return (
-    <View style={[styles.container]}>
-      <Image source={{ uri: image }} style={[styles.image,{borderRadius}]}/>
+    <View style={[styles.container,{backgroundColor}]}>
+      <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.textContainer}>
         <Text style={[styles.title,{color}]}>{title}</Text>
         <Text style={[styles.description,{color}]}>{description}</Text>
@@ -19,26 +20,21 @@ const Card = ({ title,description,color, image,borderRadius }: CardProps) => {
   )
 }
 
-export default Card
+export default PlayList
 
 const styles = StyleSheet.create({
     container: {
-        flexDirection: 'column',
+        flexDirection: 'row',
         alignItems: 'center',
         padding: 15,
       },
       image: {
-        width: 300,
-        height: 300,
+        width: 50,
+        height: 50,
+        borderRadius: 25,
+        marginRight: 15,
       },
       textContainer: {
-        paddingTop: 22,
-        fontWeight: 500,
-        fontSize: 20,
-        lineHeight: 30,
-        display: 'flex',
-        alignItems: 'center',
-        letterSpacing: 0.3,
         flex: 1,
       },
       title: {
