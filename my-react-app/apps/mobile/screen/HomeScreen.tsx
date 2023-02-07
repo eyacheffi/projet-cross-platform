@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { UpNextButton, RoundButtonMusic, Cover , Card } from '@my-workspace/my-ui'
+import { UpNextButton, RoundButtonMusic, Cover, Card } from '@my-workspace/my-ui'
 import { AntDesign, Feather } from '@expo/vector-icons';
 import Slider from '@react-native-community/slider';
 import { FontAwesome } from '@expo/vector-icons';
@@ -40,7 +40,7 @@ const HomeScreen = ({ navigation, route }) => {
             video.current.playAsync()
         } else {
 
-           
+
             video.current.pauseAsync()
 
 
@@ -73,7 +73,7 @@ const HomeScreen = ({ navigation, route }) => {
     }, [isPlaying])
 
     return (
-        <View style={{ flex: 1, width: 640, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
+        <View style={{ flex: 1, width: 450, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
             <Video
                 ref={video}
                 source={{
@@ -83,7 +83,7 @@ const HomeScreen = ({ navigation, route }) => {
                 isLooping
             />
 
-            <View style={{ flex: 1,  width: 240 ,alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ flex: 1, width: 240, alignItems: 'center', flexDirection: 'row', justifyContent: 'center' }}>
 
                 <RoundButtonMusic
                     backgroundColor="transparent"
@@ -94,20 +94,20 @@ const HomeScreen = ({ navigation, route }) => {
                 <Text style={{ color: 'white', fontSize: 16, fontWeight: 'bold', paddingLeft: 10 }}>Now Playing</Text>
             </View>
             <View style={{ flex: 6 }}>
-               
+
                 <Card
                     color="#FFFFFF"
                     description={dataPlayer.artiste}
                     borderRadius={10}
                     image={dataPlayer.poster}
                     title={dataPlayer.name}
-                    />
+                />
 
 
             </View>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
 
-               
+
                 <Slider
                     value={currentDuration}
                     onValueChange={(value) => { setCurrentDuration(value) }}
@@ -119,61 +119,59 @@ const HomeScreen = ({ navigation, route }) => {
                     maximumTrackTintColor='rgba(255, 255, 255, 0.5)'
                     thumbTintColor="#2F3142"
                 />
-                 <View style={{ flex: 1, minWidth: 300, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text style={{ color: 'white' , fontSize: 14 }}>{convertSecondToHHMMSS(currentDuration)}</Text>
-                    <Text style={{ color: 'white', fontSize: 14  }}>{convertSecondToHHMMSS(maxDuration - currentDuration)}</Text>
+                <View style={{ flex: 1, minWidth: 300, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <Text style={{ color: 'white', fontSize: 14 }}>{convertSecondToHHMMSS(currentDuration)}</Text>
+                    <Text style={{ color: 'white', fontSize: 14 }}>{convertSecondToHHMMSS(maxDuration - currentDuration)}</Text>
 
 
                 </View>
             </View>
-            <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', justifyContent: 'center' }}>
-                <RoundButtonMusic
-                    backgroundColor="transparent"
-                    icon={<Feather name="chevrons-left" size={18} color="white" />}
-                    onClickButton={() => { setCurrentDuration(oldValue => oldValue - 10) }}
-                    size={50}
-                />
+            <View style={styles.container}>
+
 
                 <RoundButtonMusic
-                    backgroundColor="transparent"
+                    backgroundColor="#2F3142"
                     icon={<Feather name="chevron-left" size={18} color="white" />}
                     onClickButton={() => { setCurrentDuration(oldValue => oldValue - 2) }}
-                    size={50}
+                    size={30}
+
                 /> <RoundButtonMusic
                     backgroundColor="#2F3142"
                     icon={isPlaying ? <FontAwesome name="pause" size={18} color="white" /> : <FontAwesome name="play" size={24} color="white" />}
                     onClickButton={() => { handlePlay(!isPlaying) }}
                     size={50}
                 /> <RoundButtonMusic
-                    backgroundColor="transparent"
+                    backgroundColor="#2F3142"
                     icon={<Feather name="chevron-right" size={18} color="white" />}
                     onClickButton={() => { setCurrentDuration(oldValue => oldValue + 2) }}
 
-                    size={50}
-                /> <RoundButtonMusic
-                    backgroundColor="transparent"
-                    icon={<Feather name="chevrons-right" size={18} color="white" />}
-                    onClickButton={() => { setCurrentDuration(oldValue => oldValue + 10) }}
-
-                    size={50}
+                    size={30}
                 />
 
             </View>
-            <View style={{ flex: 1 , marginTop:26 }}>
+            <View style={{ flex: 1, marginTop: 26 }}>
                 <UpNextButton
                     backgroundColor="#2F3142"
-                    borderRadius={30}
+                    borderRadius={0}
                     text="Up Next"
-                    textColor="#C4C4C4"
-                    type="button"
-                    />
+                    textColor="#FFFFFF"
+                    type="link"
+                />
             </View>
 
             {/* <Text>HomeScreen</Text> */}
-        </View>
+        </View >
     )
 }
 
 export default HomeScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: "row",
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: "1.5rem"
+    }
+})
