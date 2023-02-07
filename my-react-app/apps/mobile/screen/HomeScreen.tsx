@@ -73,7 +73,7 @@ const HomeScreen = ({ navigation, route }) => {
     }, [isPlaying])
 
     return (
-        <View style={{ flex: 1, width: 640, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
+        <View style={{ flex: 1, width: 450, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
             <Video
                 ref={video}
                 source={{
@@ -127,13 +127,7 @@ const HomeScreen = ({ navigation, route }) => {
                 </View>
             </View>
             <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', justifyContent: 'center' }}>
-                <RoundButtonMusic
-                    backgroundColor="transparent"
-                    icon={<Feather name="chevrons-left" size={18} color="white" />}
-                    onClickButton={() => { setCurrentDuration(oldValue => oldValue - 10) }}
-                    size={50}
-                />
-
+               
                 <RoundButtonMusic
                     backgroundColor="transparent"
                     icon={<Feather name="chevron-left" size={18} color="white" />}
@@ -150,23 +144,17 @@ const HomeScreen = ({ navigation, route }) => {
                     onClickButton={() => { setCurrentDuration(oldValue => oldValue + 2) }}
 
                     size={50}
-                /> <RoundButtonMusic
-                    backgroundColor="transparent"
-                    icon={<Feather name="chevrons-right" size={18} color="white" />}
-                    onClickButton={() => { setCurrentDuration(oldValue => oldValue + 10) }}
-
-                    size={50}
-                />
+                /> 
 
             </View>
             <View style={{ flex: 1 , marginTop:26 }}>
-                <UpNextButton
+            <UpNextButton
                     backgroundColor="#2F3142"
-                    borderRadius={30}
+                    borderRadius={0}
                     text="Up Next"
-                    textColor="#C4C4C4"
-                    type="button"
-                    />
+                    textColor="#FFFFFF"
+                    type="link"
+                />
             </View>
 
             {/* <Text>HomeScreen</Text> */}
