@@ -73,7 +73,7 @@ const HomeScreen = ({ navigation, route }) => {
     }, [isPlaying])
 
     return (
-        <View style={{ flex: 1, width: 640, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
+        <View style={{ flex: 1, width: 640, backgroundColor: "#B20A33", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
             <Video
                 ref={video}
                 source={{
@@ -98,7 +98,7 @@ const HomeScreen = ({ navigation, route }) => {
                 <Card
                     color="#FFFFFF"
                     description={dataPlayer.artiste}
-                    borderRadius={10}
+                    borderRadius={150}
                     image={dataPlayer.poster}
                     title={dataPlayer.name}
                     />
@@ -117,7 +117,7 @@ const HomeScreen = ({ navigation, route }) => {
                     maximumValue={maxDuration}
                     minimumTrackTintColor="#FFFFFF"
                     maximumTrackTintColor='rgba(255, 255, 255, 0.5)'
-                    thumbTintColor="#2F3142"
+                    thumbTintColor="#B20A33"
                 />
                  <View style={{ flex: 1, minWidth: 300, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
                     <Text style={{ color: 'white' , fontSize: 14 }}>{convertSecondToHHMMSS(currentDuration)}</Text>
@@ -140,8 +140,8 @@ const HomeScreen = ({ navigation, route }) => {
                     onClickButton={() => { setCurrentDuration(oldValue => oldValue - 2) }}
                     size={50}
                 /> <RoundButtonMusic
-                    backgroundColor="#2F3142"
-                    icon={isPlaying ? <FontAwesome name="pause" size={18} color="white" /> : <FontAwesome name="play" size={24} color="white" />}
+                    backgroundColor="#BCBCBC"
+                    icon={isPlaying ? <FontAwesome name="pause" size={18} color="#B20A33" /> : <FontAwesome name="play" size={24} color="#B20A33" />}
                     onClickButton={() => { handlePlay(!isPlaying) }}
                     size={50}
                 /> <RoundButtonMusic
@@ -161,7 +161,7 @@ const HomeScreen = ({ navigation, route }) => {
             </View>
             <View style={{ flex: 1 , marginTop:26 }}>
                 <UpNextButton
-                    backgroundColor="#2F3142"
+                    backgroundColor="#B20A33"
                     borderRadius={30}
                     text="Up Next"
                     textColor="#C4C4C4"
