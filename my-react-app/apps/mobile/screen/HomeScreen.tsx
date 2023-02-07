@@ -73,7 +73,7 @@ const HomeScreen = ({ navigation, route }) => {
     }, [isPlaying])
 
     return (
-        <View style={{ flex: 1, width: 450, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
+        <View style={{ flex: 1, width: 640, backgroundColor: "#1F1D2B", justifyContent: 'center', alignItems: 'center' }} key={dataPlayer.id}>
             <Video
                 ref={video}
                 source={{
